@@ -1,4 +1,4 @@
-$max-width: 1200px !default;
+$max-width: 100% !default;
 
 // Padding used for layout margins
 $pad-min: 18px !default;
@@ -47,7 +47,6 @@ body {
   -webkit-text-size-adjust: none;
   max-width: $max-width;
   position: relative;
-  margin: 0 auto;
   > header, > nav, > footer, #content > article, #content > div > article, #content > div > section {
     @extend .group;
     padding-left: $pad-min;
@@ -83,9 +82,17 @@ body {
     }
   }
   > header {
-    font-size: $header-font-size;
+    font-size: 1.5em;
     padding-top: $header-padding-top;
     padding-bottom: $header-padding-bottom;
+    @media only screen and (min-width: 768px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 185px;
+      height: 100%;
+      font-size: $header-font-size;
+    }
   }
 }
 
@@ -122,7 +129,7 @@ body.sidebar-footer {
 }
 
 @media only screen and (min-width: 550px) {
-  body > header { font-size: $header-font-size; }
+  body > header { font-size: $header-font-size * 1.5; }
 }
 @media only screen and (min-width: 750px) {
   aside.sidebar { @include collapse-sidebar; }
@@ -130,9 +137,18 @@ body.sidebar-footer {
 #main, #content, .sidebar {
   @extend .group;
 }
+
+#main {
+  width: 100%;
+  @media only screen and (min-width: 768px) {
+    float: right;
+    width: 77%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   body { -webkit-text-size-adjust: auto; }
-  body > header { font-size: $header-font-size * 1.2; }
+  body > header { font-size: $header-font-size * 1.5; }
   #main {
     padding: 0;
     margin: 0 auto;

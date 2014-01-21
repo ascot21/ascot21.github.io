@@ -1,8 +1,9 @@
 body > header {
-  background: $header-bg;
   h1 {
-    display: inline-block;
     margin: 0;
+    @media only screen and (max-width: 767px) {
+      text-align: center;
+    }
     a, a:visited, a:hover {
       color: $title_color;
       text-decoration: none;
@@ -11,8 +12,31 @@ body > header {
   h2 {
     margin: .2em 0 0;
     @extend .sans;
-    font-size: 1em;
+    font-size: .8em;
     color: $subtitle-color;
-    font-weight: normal;
+    font-weight: 700;
+    @media only screen and (max-width: 767px) {
+      text-align: center;
+    }
+  }
+
+  p {
+    color: $subtitle-color;
+    font-size: .7em;
+    margin: .75em 0;
+    @media only screen and (max-width: 767px) {
+      text-align: center;
+    }
+  }
+
+  #avatar {
+    border-radius: 50%;
+    margin-bottom: 1em;
+    @media only screen and (max-width: 767px) {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: .5em;
+      width: 100px;
+    }
   }
 }

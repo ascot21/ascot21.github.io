@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://ascot21.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Adam Scott
+subtitle: Software Developer
+author: Adam Scott
 simple_search: http://google.com/search
-description:
+description: Full stack software developer that specializes in building custom web applications using Ruby and Javascript.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -40,6 +40,8 @@ rdiscount:
     - footnotes
     - smart
 pygments: false # default python pygments have been replaced by pygments.rb
+
+sidebar: collapse
 
 paginate: 10          # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/

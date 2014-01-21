@@ -1,8 +1,8 @@
 $blockquote: $type-border !default;
-$sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
-$serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
+$sans: "Open Sans", "Helvetica Neue", Arial, sans-serif !default;
+$serif: "Open Sans", Georgia, Times, "Times New Roman", serif !default;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+$heading-font-family: "Open Sans", Verdana, Helvetica, sans-serif !default;
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $heading-font-family !default;
 
@@ -11,14 +11,14 @@ $header-subtitle-font-family: $heading-font-family !default;
   font-family: $heading-font-family;
 }
 .sans { font-family: $sans; }
-.serif { font-family: $serif; }
+.serif { font-family: $serif; font-weight: 300;}
 .mono { font-family: $mono; }
 
 body > header h1 {
-  font-size: 2.2em;
+  font-size: 1.25em;
   @extend .heading;
   font-family: $header-title-font-family;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 1.2em;
   margin-bottom: 0.6667em;
 }
@@ -30,6 +30,7 @@ body {
   line-height: 1.5em;
   color: $text-color;
   @extend .serif;
+  font-size: 14px;
 }
 h1 {
   font-size: 2.2em;
@@ -37,7 +38,7 @@ h1 {
 }
 
 @media only screen and (min-width: 992px) {
-  body { font-size: 1.15em; }
+  body { font-size: 1em; }
   h1 { font-size: 2.6em; line-height: 1.2em; }
 }
 
