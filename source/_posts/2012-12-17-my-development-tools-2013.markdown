@@ -14,9 +14,12 @@ Now that I'm working more and more away from home my main development machine ha
 
 I'm not big on using peripherals other than the standard keyboard and mouse.  I use several external harddrives to store my music, videos and backups.
 
+<!--more-->
+
 ###Software
 
 Here are the top tools that I use every day.
+
 
 ***[Dropbox](http://dropbox.com/)*** - I use Dropbox for a variety of reasons.  It makes sharing files with other people incredibly easy.  I also use it to sync the preferences of several of my development apps across machines.  It's easy to set this up using [symbolic links](http://mattgeri.com/2012/01/symbolic-links-on-a-mac-os-x/).  I also use Dropbox to sync ebooks that I'm ready across my Macbook Pro, iPad and iPhone.
 

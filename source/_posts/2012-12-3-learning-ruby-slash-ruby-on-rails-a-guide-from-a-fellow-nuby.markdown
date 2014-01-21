@@ -8,6 +8,8 @@ categories: [Ruby, Ruby on Rails, Beginner]
 
 2012 has been a transformative year for my career.  Back in May I heard about a new software training program called the Nashville Software School.  It's a new innovative training program that teaches students the fundamentals of web application technologies in via classroom lectures, exercises, mentors and apprenticeship.  I got involved with the program by being a teacher for the front-end part of the school.  I was a student in the second half which taught us the fundamentals of web application development with Ruby on Rails and all of the associated technologies.  After going through the program, I'd like to share my tips on how to learn Ruby and Rails.  There is more that one way to learn but here's what worked for me.
 
+<!--more-->
+
 ###Prerequisites
 
 ***HTML/CSS*** - You don't need to be an expert but it'll come in handy once you start working on views in Ruby on Rails
