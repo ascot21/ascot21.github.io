@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tools, | Adam Scott]]></title>
+  <link href="http://ascot21.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://ascot21.github.io/"/>
+  <updated>2014-01-20T22:57:07-06:00</updated>
+  <id>http://ascot21.github.io/</id>
+  <author>
+    <name><![CDATA[Adam Scott]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My Development Tools (2013)]]></title>
+    <link href="http://ascot21.github.io/blog/2012/12/17/my-development-tools-2013/"/>
+    <updated>2012-12-17T20:18:16-06:00</updated>
+    <id>http://ascot21.github.io/blog/2012/12/17/my-development-tools-2013</id>
+    <content type="html"><![CDATA[<p>Every year more and more tools come out in the technology space.  In 2012,  I&rsquo;ve adopted a ton of new tools into my web development workflow.   Here&rsquo;s a list of all of my tools, with the new ones in bold.</p>
+
+<h3>Hardware</h3>
+
+<p>Now that I&rsquo;m working more and more away from home my main development machine has become a 15 &ldquo; Macbook Pro.  It&rsquo;s a 2GHz Intel Core i7 with 8Gb of RAM.  When I do work from home I prefer to work on 27&rdquo; iMac.  I love the screen real estate and often wish I could bring it with me to the coffee shops I&rsquo;m usually in.</p>
+
+<p>I&rsquo;m not big on using peripherals other than the standard keyboard and mouse.  I use several external harddrives to store my music, videos and backups.</p>
+
+<!--more-->
+
+
+<h3>Software</h3>
+
+<p>Here are the top tools that I use every day.</p>
+
+<p><strong><em><a href="http://dropbox.com/">Dropbox</a></em></strong> &ndash; I use Dropbox for a variety of reasons.  It makes sharing files with other people incredibly easy.  I also use it to sync the preferences of several of my development apps across machines.  It&rsquo;s easy to set this up using <a href="http://mattgeri.com/2012/01/symbolic-links-on-a-mac-os-x/">symbolic links</a>.  I also use Dropbox to sync ebooks that I&rsquo;m ready across my Macbook Pro, iPad and iPhone.</p>
+
+<p><strong><em><a href="http://www.sublimetext.com/">Sublime Text 2</a></em></strong> &ndash; Until this year, my go to text editor was Textmate.  While I still think Textmate is a good choice (especially now that it&rsquo;s open source), I think the features of Sublime Text set it apart.  I love how customizable it is and how many of the built-in features make you so much more productive.  And if it doesn&rsquo;t do something you&rsquo;d like, there&rsquo;s probably a package that you can install to add in the feature.  Check out my <a href="https://github.com/ascot21/SublimePrefs/blob/master/Preferences.sublime-settings">Sublime Preferences file</a>.</p>
+
+<p><strong><em><a href="http://www.alfredapp.com/">Alfred</a></em></strong> &ndash; Alfred has become an essential part of how I work on my Mac.  I&rsquo;ve mainly used it for launching apps and doing searches but I&rsquo;m slowly learning how to use all of it&rsquo;s amazing features.</p>
+
+<h3>Developer Tools</h3>
+
+<p><strong><em><a href="http://git-scm.com/">Git</a></em></strong> and <strong><em><a href="http://github.com">Github</a></em></strong> &ndash; Version control has always something I knew I needed but I never knew how to go about learning to use it.  Thanks to a few mentors I was able to learn it this year.  I&rsquo;ve started implementing it for every project that I work on.  Not only does it make version control easy but it makes collaborating on a piece of software with other developers manageable.</p>
+
+<p><strong><em><a href="http://www.iterm2.com/#/section/home">iTerm</a></em></strong> &ndash; Learning how to use the Command Line was a big part of the new skills that I&rsquo;ve learned this year.  While the built in Terminal application of Mac OS X is fine, I really love the features of iTerm.  This is the newest tool I&rsquo;ve adopted so I&rsquo;m still learning how to customize and use it to it&rsquo;s full potential.</p>
+
+<p><strong><em><a href="http://rubular.com/">Rubular</a></em></strong> &ndash; Great for writing and figuring out regular expressions.</p>
+
+<p><strong><em><a href="http://foundation.zurb.com/">Foundation</a></em></strong> &ndash; My preferred front-end framework of choice.  Similar to Twitter Bootstrap but I like the default design better.  I use it for building fully responsive sites but I also use it for quick prototyping.</p>
+
+<p><strong><em><a href="http://sass-lang.com/">Sass</a></em></strong> &ndash; I switched from using Less for precompiling CSS this year mainly because Sass is widely used in the Ruby community.</p>
+
+<h3>User Tools</h3>
+
+<p><strong><em><a href="https://agilebits.com/onepassword">1Password </a></em></strong>&ndash; Great for managing all of the passwords I use.  A must have from now on.</p>
+
+<p><strong><em><a href="https://trello.com/">Trello</a></em></strong> &ndash; Prior to this year I managed most of projects through very informal practices (ie. via email and written down to-do lists).  Now I&rsquo;m using Trello to keep track of what I&rsquo;m working on.  I also like that I can allow clients and collaborators to see what I&rsquo;m working on and contribute if needed.</p>
+
+<p><strong><em><a href="http://freshbooks.com/">Freshbooks</a></em></strong> &ndash; Love how easy Freshbooks makes accounting.</p>
+
+<p><strong><em><a href="http://www.backblaze.com/">Backblaze</a></em></strong> &ndash; I&rsquo;ve added online backup to my workflow.  In the past, I relied on external hard drives with Time Machine.  Backblaze makes this something I don&rsquo;t even think about.</p>
+
+<p><strong><em><a href="http://www.telestream.net/screenflow/overview.htm">Screenflow</a></em></strong> &ndash; I often record video walkthroughs of sites I build for clients so that they have a reference material on how to update their site.  Screenflow makes it easy to quickly record high quality videos.</p>
+
+<p><strong><em><a href="http://limechat.net/mac/">LimeChat</a></em></strong> &ndash; I&rsquo;ve started hanging out in some developer focused IRC channels lately.  LimeChat is my preferred client.</p>
+
+<p><strong><em><a href="http://www.adobe.com/products/creativecloud.html">Photoshop/Illustrator/InDesign</a></em></strong> &ndash; I&rsquo;m still using CS5 for all of my design tools.  Haven&rsquo;t had a reason to upgrade yet.</p>
+
+<p><strong><em><a href="http://www.rdio.com/">Rdio</a></em></strong> &ndash; In 2011, I started using streaming music to supplement my music collection.  In 2012, I&rsquo;ve basically moved all of my collection to streaming music.  I&rsquo;ve chosen Rdio because I love the great design of the app and the community features.</p>
+
+<h3>What&rsquo;s Next</h3>
+
+<p>There are several tools that are on my list of things to learn about and hopefully start using in the coming months.  Here&rsquo;s a breakdown of the ones I plan on diving into soon.</p>
+
+<p><strong><em><a href="http://coffeescript.org/">Coffeescript</a></em></strong> &ndash; Should hopefully help make writing javascript quicker and easier.</p>
+
+<p><strong><em><a href="http://haml.info/">Haml</a></em></strong> &ndash; A HTML precompiler.</p>
+
+<p><strong><em><a href="http://backbonejs.org/">Backbone.js</a></em></strong> &ndash; An MVC javascript framework for the client side.</p>
+]]></content>
+  </entry>
+  
+</feed>

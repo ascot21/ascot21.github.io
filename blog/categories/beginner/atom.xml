@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Beginner | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Beginner | Adam Scott]]></title>
   <link href="http://ascot21.github.io/blog/categories/beginner/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-01-20T14:12:21-06:00</updated>
+  <updated>2014-01-20T22:57:07-06:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Adam Scott]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -19,6 +19,9 @@
     <updated>2012-12-03T10:00:23-06:00</updated>
     <id>http://ascot21.github.io/blog/2012/12/03/learning-ruby-slash-ruby-on-rails-a-guide-from-a-fellow-nuby</id>
     <content type="html"><![CDATA[<p>2012 has been a transformative year for my career.  Back in May I heard about a new software training program called the Nashville Software School.  It&rsquo;s a new innovative training program that teaches students the fundamentals of web application technologies in via classroom lectures, exercises, mentors and apprenticeship.  I got involved with the program by being a teacher for the front-end part of the school.  I was a student in the second half which taught us the fundamentals of web application development with Ruby on Rails and all of the associated technologies.  After going through the program, I&rsquo;d like to share my tips on how to learn Ruby and Rails.  There is more that one way to learn but here&rsquo;s what worked for me.</p>
+
+<!--more-->
+
 
 <h3>Prerequisites</h3>
 
