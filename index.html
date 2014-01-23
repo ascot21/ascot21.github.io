@@ -9,7 +9,7 @@
   <meta name="author" content="Adam Scott">
 
   
-  <meta name="description" content="Every year more and more tools come out in the technology space. In 2012, I&rsquo;ve adopted a ton of new tools into my web development workflow. &hellip;">
+  <meta name="description" content="Yes, renaming a Rails application isn&rsquo;t something that you&rsquo;ll do often. But when you do have to do it, you&rsquo;ll quickly realize that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/21/renaming-a-ruby-on-rails-application/">Renaming a Ruby on Rails Application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-21T21:32:48-06:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yes, renaming a Rails application isn&rsquo;t something that you&rsquo;ll do often.  But when you do have to do it, you&rsquo;ll quickly realize that it&rsquo;s not as easy as just changing the name in a file or two. Your application name is spread out through a few dozen files including environment configs, initializers, routes and our application.rb file.</p>
+
+<p>Luckily you don&rsquo;t have to remember which files to change.  Morshed Alam created a gem (appropriately named <a href="https://github.com/morshedalam/rename">Rename</a>) that handles the grunt work for you.  Rename goes through your app and performs a <code>gsub</code> where appropriate.</p>
+
+<h3>To Rename Your Application</h3>
+
+<p>Add this line to your Gemfile:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;rename&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/21/renaming-a-ruby-on-rails-application/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>

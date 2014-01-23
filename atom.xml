@@ -4,7 +4,7 @@
   <title><![CDATA[Adam Scott]]></title>
   <link href="http://ascot21.github.io/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-01-20T22:57:07-06:00</updated>
+  <updated>2014-01-22T21:09:13-06:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Renaming a Ruby on Rails Application]]></title>
+    <link href="http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application/"/>
+    <updated>2014-01-21T21:32:48-06:00</updated>
+    <id>http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application</id>
+    <content type="html"><![CDATA[<p>Yes, renaming a Rails application isn&rsquo;t something that you&rsquo;ll do often.  But when you do have to do it, you&rsquo;ll quickly realize that it&rsquo;s not as easy as just changing the name in a file or two. Your application name is spread out through a few dozen files including environment configs, initializers, routes and our application.rb file.</p>
+
+<p>Luckily you don&rsquo;t have to remember which files to change.  Morshed Alam created a gem (appropriately named <a href="https://github.com/morshedalam/rename">Rename</a>) that handles the grunt work for you.  Rename goes through your app and performs a <code>gsub</code> where appropriate.</p>
+
+<h3>To Rename Your Application</h3>
+
+<p>Add this line to your Gemfile:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;rename&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<p>Rename the app:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">g</span> <span class="ss">rename</span><span class="p">:</span><span class="n">app_to</span> <span class="no">NEW_NAME</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will rename the app in all of these files:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">ru</span>
+</span><span class='line'><span class="no">Gemfile</span>
+</span><span class='line'><span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span>
+</span><span class='line'><span class="no">Rakefile</span>
+</span><span class='line'><span class="no">README</span><span class="o">.</span><span class="n">rdoc</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">application</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">boot</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="n">development</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="n">production</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="nb">test</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">backtrace_silencers</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">filter_parameter_logging</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">inflections</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">mime_types</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">secret_token</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">session_store</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">wrap_parameters</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">routes</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">session_store</span><span class="o">.</span><span class="n">rb</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You&rsquo;ll probably want to rename your databases while you are at it.</p>
+
+<p>For Postgresql, log into psql and then:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ALTER</span> <span class="no">DATABASE</span> <span class="n">db_name</span> <span class="no">RENAME</span> <span class="no">TO</span> <span class="n">new_db_name</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Enjoy!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Development Tools (2013)]]></title>
