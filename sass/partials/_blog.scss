@@ -134,3 +134,22 @@ article {
     }
   }
 }
+
+.intro {
+  @extend article;
+  box-sizing: border-box;
+  text-align: left;
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+  h1 {
+    // color: $link-color-hover;
+    font-size: 4em;
+    margin: 0;
+  }
+  h3 {
+    font-weight: normal;
+    line-height: 130%;
+    padding: 0 12em 0 0;
+  }
+}
