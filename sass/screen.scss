@@ -8,3 +8,10 @@
 @import "partials";
 @import "plugins/**/*";
 @import "custom/styles";
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
