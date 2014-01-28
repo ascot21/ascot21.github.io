@@ -3,7 +3,7 @@ layout: post
 title: "Renaming a Ruby On Rails Application"
 date: 2014-01-21 21:32:48 -0600
 comments: true
-categories: Ruby on Rails, gems
+categories: [Ruby on Rails, gems]
 ---
 
 Yes, renaming a Rails application isn't something that you'll do often.  But when you do have to do it, you'll quickly realize that it's not as easy as just changing the name in a file or two. Your application name is spread out through a few dozen files including environment configs, initializers, routes and our application.rb file.

@@ -3,7 +3,7 @@ layout: post
 title: "My Development Tools (2013)"
 date: 2012-12-17 20:18:16 -0600
 comments: true
-categories: Tools, Ruby
+categories: [Tools, Ruby]
 ---
 
 Every year more and more tools come out in the technology space.  In 2012,  I've adopted a ton of new tools into my web development workflow.   Here's a list of all of my tools, with the new ones in bold.
