@@ -1,3 +1,14 @@
+.meta {
+  width: 100%;
+}
+
+.categories {
+  float: right;
+  a {
+    font-family: $sans;
+  }
+}
+
 article {
   padding-top: 1em;
   a { @extend .force-wrap; }

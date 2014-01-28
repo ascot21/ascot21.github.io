@@ -12,6 +12,7 @@
            | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread"
              data-disqus-identifier="{% if post.meta.disqus_id %}{{ post.meta.disqus_id }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">Comments</a>
         {% endif %}
+        {% include post/categories.html %}
       </p>
     {% endunless %}
   </header>
