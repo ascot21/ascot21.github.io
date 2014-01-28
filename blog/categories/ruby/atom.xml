@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Adam Scott]]></title>
   <link href="http://ascot21.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-01-27T23:08:34-06:00</updated>
+  <updated>2014-01-27T23:13:42-06:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -12,66 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Renaming a Ruby on Rails Application]]></title>
-    <link href="http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application/"/>
-    <updated>2014-01-21T21:32:48-06:00</updated>
-    <id>http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application</id>
-    <content type="html"><![CDATA[<p>Yes, renaming a Rails application isn&rsquo;t something that you&rsquo;ll do often.  But when you do have to do it, you&rsquo;ll quickly realize that it&rsquo;s not as easy as just changing the name in a file or two. Your application name is spread out through a few dozen files including environment configs, initializers, routes and our application.rb file.</p>
-
-<p>Luckily you don&rsquo;t have to remember which files to change.  Morshed Alam created a gem (appropriately named <a href="https://github.com/morshedalam/rename">Rename</a>) that handles the grunt work for you.  Rename goes through your app and performs a <code>gsub</code> where appropriate.</p>
-
-<h3>To Rename Your Application</h3>
-
-<p>Add this line to your Gemfile:
-<code>ruby
-gem "rename"
-</code></p>
-
-<!--more-->
-
-
-<p>Rename the app:
-<code>
-rails g rename:app_to NEW_NAME
-</code></p>
-
-<p>This will rename the app in all of these files:</p>
-
-<p><code>
-config.ru
-Gemfile
-Gemfile.lock
-Rakefile
-README.rdoc
-config/application.rb
-config/boot.rb
-config/environment.rb
-config/environments/development.rb
-config/environments/production.rb
-config/environments/test.rb
-config/initializers/backtrace_silencers.rb
-config/initializers/filter_parameter_logging.rb
-config/initializers/inflections.rb
-config/initializers/mime_types.rb
-config/initializers/secret_token.rb
-config/initializers/session_store.rb
-config/initializers/wrap_parameters.rb
-config/routes.rb
-config/initializers/session_store.rb
-</code></p>
-
-<p>You&rsquo;ll probably want to rename your databases while you are at it.</p>
-
-<p>For Postgresql, log into psql and then:
-<code>
-ALTER DATABASE db_name RENAME TO new_db_name;
-</code></p>
-
-<p>Enjoy!</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Development Tools (2013)]]></title>
