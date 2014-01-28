@@ -4,7 +4,7 @@
   <title><![CDATA[Adam Scott]]></title>
   <link href="http://ascot21.github.io/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-01-27T23:13:42-06:00</updated>
+  <updated>2014-01-27T23:46:42-06:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Moving to Octopress From Wordpress]]></title>
+    <link href="http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress/"/>
+    <updated>2014-01-27T23:15:22-06:00</updated>
+    <id>http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress</id>
+    <content type="html"><![CDATA[<p>After years of using Wordpress as my blogging platform I&rsquo;ve decided to move to <a href="http://octopress.org/">Octopress</a>.  While there was not necessarily anything wrong with using Wordpress for my blog, I think it was time to move on.  Octopress is a blogging framework that is built around the <a href="http://jekyllrb.com/">Jekyll.rb</a> project that generates static html sites.</p>
+
+<p>Here&rsquo;s why I switched:</p>
+
+<ul>
+<li><strong><em>It&rsquo;s Ruby!</em></strong> &ndash; Since I spent most of my time coding in Ruby it only made sense to move to a Ruby based blogging platform.</li>
+<li><strong><em>Focus On Content</em></strong> &ndash; I found on my old Wordpress blog, I spent a lot of time configuring my theme and worrying about all the other pages of the site.  I decided to concentrate on blog posts.  The new setup has the content at the forefront.</li>
+<li><strong><em>Free Hosting</em></strong> &ndash; Octopress is built on top of <a href="http://jekyllrb.com/">Jekyll.rb</a> which powers <a href="http://pages.github.com/">Github Pages</a>. Github Pages hosting is free. Can&rsquo;t beat that.</li>
+<li><strong><em>Easy Publishing</em></strong> &ndash; Creating and publishing a blog post is as easy as creating a Markdown file, writing my content and then simply running <code>rake deploy</code></li>
+<li><strong><em>Site Speed</em></strong> &ndash; Octopress sites are just static html.  No databases to load.  Much faster.</li>
+<li><strong><em>No More DB Backups</em></strong> &ndash; Since I&rsquo;m deploying the site with Github Pages, I don&rsquo;t need to worry about backing up the content in the database.  The entire thing is in version control with Git.</li>
+<li><strong><em>Awesome Tech</em></strong> &ndash; I get to use SASS and Markdown.</li>
+<li><strong><em>Easy Comments</em></strong> &ndash; Setting up commenting was as easy as adding my Disqus short name to the config.yml file.</li>
+<li><strong><em>Quick Code Snippets</em></strong> &ndash; Octopress includes a code block plugin that includes language specific syntax highlighting.</li>
+</ul>
+
+
+<p>My hope is that with all of this combined, I&rsquo;ll write more.  I really do enjoy writing about tech topics as I think it helps me solidify my knowledge and hopefully others will find the content useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Renaming a Ruby on Rails Application]]></title>
