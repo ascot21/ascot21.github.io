@@ -4,7 +4,7 @@
   <title><![CDATA[Adam Scott]]></title>
   <link href="http://ascot21.github.io/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-02-07T15:07:03-06:00</updated>
+  <updated>2014-02-07T15:08:35-06:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -31,6 +31,9 @@
 <h3>Step 2 &ndash; Create a Subscription Plan</h3>
 
 <p>Once you&rsquo;ve signed up for Recurly you&rsquo;ll be presented with a button to &ldquo;Create a Subscription Plan&rdquo;.  Click that or if you are already in your account click on &ldquo;Subscription Plans&rdquo; under the &ldquo;Configuration&rdquo; section of the left navigation.  Then in the top right click &ldquo;New Subscription Plan&rdquo;.</p>
+
+<!--more-->
+
 
 <p>Fill out the form.</p>
 
