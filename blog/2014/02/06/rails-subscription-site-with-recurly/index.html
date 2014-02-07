@@ -1,24 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Adam Scott]]></title>
-  <link href="http://ascot21.github.io/atom.xml" rel="self"/>
-  <link href="http://ascot21.github.io/"/>
-  <updated>2014-02-07T15:07:03-06:00</updated>
-  <id>http://ascot21.github.io/</id>
-  <author>
-    <name><![CDATA[Adam Scott]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails Subscription Site With Recurly - Adam Scott</title>
+  <meta name="author" content="Adam Scott">
 
   
-  <entry>
-    <title type="html"><![CDATA[Rails Subscription Site With Recurly]]></title>
-    <link href="http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/"/>
-    <updated>2014-02-06T20:24:06-06:00</updated>
-    <id>http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly</id>
-    <content type="html"><![CDATA[<p>Creating a subscription based website with Rails can seem daunting at first, but with the help of <a href="http://recurly.com">Recurly</a> and <a href="https://github.com/plataformatec/devise">Devise</a> you can be up and running in no time.</p>
+  <meta name="description" content="Creating a subscription based website with Rails can seem daunting at first, but with the help of Recurly and Devise you can be up and running in no &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Adam Scott" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-11513687-11']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><img src="/images/avatar.jpg" id="avatar">
+<hgroup>
+  <h1><a href="/">Adam Scott</a></h1>
+  
+    <h2>Software Developer</h2>
+  
+  <p>Full stack software developer that specializes in building custom web applications using Ruby and Javascript.</p>
+</hgroup>
+
+
+    <nav role="navigation"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+  
+<form action="http://google.com/search" method="get" id="search">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ascot21.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+</nav>
+  </header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails Subscription Site With Recurly</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-06T20:24:06-06:00" pubdate data-updated="true"><i class="fa fa-calendar-o"></i> Feb 6<span>th</span>, 2014</time>
+        
+        
+
+<span class="categories">
+  <i class="fa fa-comment"></i>
+  
+    <a class='category' href='/blog/categories/gems/'>Gems</a>, <a class='category' href='/blog/categories/rails/'>Rails,</a>
+  
+</span>
+
+
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Creating a subscription based website with Rails can seem daunting at first, but with the help of <a href="http://recurly.com">Recurly</a> and <a href="https://github.com/plataformatec/devise">Devise</a> you can be up and running in no time.</p>
 
 <p>Recurly.js does most of its work in the user&rsquo;s browser, dynamically building a form that handles the transaction.</p>
 
@@ -482,287 +577,119 @@
 <h3>You&rsquo;re Done!</h3>
 
 <p>This concludes the basics of setting up a subscription payment form for a Rails app.  More than likely you&rsquo;ll want to also setup a form where a user can update their billing info.  To do so you&rsquo;ll need to use Recurly&rsquo;s <a href="https://docs.recurly.com/api/recurlyjs/reference#js-buildBillingInfoUpdateForm">buildBillingInfoUpdateForm</a> function.</p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    
+      <div class="sharing">
   
-  <entry>
-    <title type="html"><![CDATA[Moving to Octopress From Wordpress]]></title>
-    <link href="http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress/"/>
-    <updated>2014-01-27T23:15:22-06:00</updated>
-    <id>http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress</id>
-    <content type="html"><![CDATA[<p>After years of using Wordpress as my blogging platform I&rsquo;ve decided to move to <a href="http://octopress.org/">Octopress</a>.  While there was not necessarily anything wrong with using Wordpress for my blog, I think it was time to move on.  Octopress is a blogging framework that is built around the <a href="http://jekyllrb.com/">Jekyll.rb</a> project that generates static html sites.</p>
-
-<p>Here&rsquo;s why I switched:</p>
-
-<ul>
-<li><strong><em>It&rsquo;s Ruby!</em></strong> &ndash; Since I spent most of my time coding in Ruby it only made sense to move to a Ruby based blogging platform.</li>
-<li><strong><em>Focus On Content</em></strong> &ndash; I found on my old Wordpress blog, I spent a lot of time configuring my theme and worrying about all the other pages of the site.  I decided to concentrate on blog posts.  The new setup has the content at the forefront.</li>
-<li><strong><em>Free Hosting</em></strong> &ndash; Octopress is built on top of <a href="http://jekyllrb.com/">Jekyll.rb</a> which powers <a href="http://pages.github.com/">Github Pages</a>. Github Pages hosting is free. Can&rsquo;t beat that.</li>
-<li><strong><em>Easy Publishing</em></strong> &ndash; Creating and publishing a blog post is as easy as creating a Markdown file, writing my content and then simply running <code>rake deploy</code></li>
-<li><strong><em>Site Speed</em></strong> &ndash; Octopress sites are just static html.  No databases to load.  Much faster.</li>
-<li><strong><em>No More DB Backups</em></strong> &ndash; Since I&rsquo;m deploying the site with Github Pages, I don&rsquo;t need to worry about backing up the content in the database.  The entire thing is in version control with Git.</li>
-<li><strong><em>Awesome Tech</em></strong> &ndash; I get to use SASS and Markdown.</li>
-<li><strong><em>Easy Comments</em></strong> &ndash; Setting up commenting was as easy as adding my Disqus short name to the config.yml file.</li>
-<li><strong><em>Quick Code Snippets</em></strong> &ndash; Octopress includes a code block plugin that includes language specific syntax highlighting.</li>
-</ul>
-
-
-<p>My hope is that with all of this combined, I&rsquo;ll write more.  I really do enjoy writing about tech topics as I think it helps me solidify my knowledge and hopefully others will find the content useful.</p>
-]]></content>
-  </entry>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/" data-via="" data-counturl="http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/" >Tweet</a>
   
-  <entry>
-    <title type="html"><![CDATA[Renaming a Ruby on Rails Application]]></title>
-    <link href="http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application/"/>
-    <updated>2014-01-21T21:32:48-06:00</updated>
-    <id>http://ascot21.github.io/blog/2014/01/21/renaming-a-ruby-on-rails-application</id>
-    <content type="html"><![CDATA[<p>Yes, renaming a Rails application isn&rsquo;t something that you&rsquo;ll do often.  But when you do have to do it, you&rsquo;ll quickly realize that it&rsquo;s not as easy as just changing the name in a file or two. Your application name is spread out through a few dozen files including environment configs, initializers, routes and our application.rb file.</p>
-
-<p>Luckily you don&rsquo;t have to remember which files to change.  Morshed Alam created a gem (appropriately named <a href="https://github.com/morshedalam/rename">Rename</a>) that handles the grunt work for you.  Rename goes through your app and performs a <code>gsub</code> where appropriate.</p>
-
-<h3>To Rename Your Application</h3>
-
-<p>Add this line to your Gemfile:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;rename&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<!--more-->
-
-
-<p>Rename the app:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">g</span> <span class="ss">rename</span><span class="p">:</span><span class="n">app_to</span> <span class="no">NEW_NAME</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will rename the app in all of these files:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">ru</span>
-</span><span class='line'><span class="no">Gemfile</span>
-</span><span class='line'><span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span>
-</span><span class='line'><span class="no">Rakefile</span>
-</span><span class='line'><span class="no">README</span><span class="o">.</span><span class="n">rdoc</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">application</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">boot</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="n">development</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="n">production</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">environments</span><span class="o">/</span><span class="nb">test</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">backtrace_silencers</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">filter_parameter_logging</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">inflections</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">mime_types</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">secret_token</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">session_store</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">wrap_parameters</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">routes</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">session_store</span><span class="o">.</span><span class="n">rb</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You&rsquo;ll probably want to rename your databases while you are at it.</p>
-
-<p>For Postgresql, log into psql and then:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ALTER</span> <span class="no">DATABASE</span> <span class="n">db_name</span> <span class="no">RENAME</span> <span class="no">TO</span> <span class="n">new_db_name</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Enjoy!</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[My Development Tools (2013)]]></title>
-    <link href="http://ascot21.github.io/blog/2012/12/17/my-development-tools-2013/"/>
-    <updated>2012-12-17T20:18:16-06:00</updated>
-    <id>http://ascot21.github.io/blog/2012/12/17/my-development-tools-2013</id>
-    <content type="html"><![CDATA[<p>Every year more and more tools come out in the technology space.  In 2012,  I&rsquo;ve adopted a ton of new tools into my web development workflow.   Here&rsquo;s a list of all of my tools, with the new ones in bold.</p>
-
-<h3>Hardware</h3>
-
-<p>Now that I&rsquo;m working more and more away from home my main development machine has become a 15 &ldquo; Macbook Pro.  It&rsquo;s a 2GHz Intel Core i7 with 8Gb of RAM.  When I do work from home I prefer to work on 27&rdquo; iMac.  I love the screen real estate and often wish I could bring it with me to the coffee shops I&rsquo;m usually in.</p>
-
-<p>I&rsquo;m not big on using peripherals other than the standard keyboard and mouse.  I use several external harddrives to store my music, videos and backups.</p>
-
-<!--more-->
-
-
-<h3>Software</h3>
-
-<p>Here are the top tools that I use every day.</p>
-
-<p><strong><em><a href="http://dropbox.com/">Dropbox</a></em></strong> &ndash; I use Dropbox for a variety of reasons.  It makes sharing files with other people incredibly easy.  I also use it to sync the preferences of several of my development apps across machines.  It&rsquo;s easy to set this up using <a href="http://mattgeri.com/2012/01/symbolic-links-on-a-mac-os-x/">symbolic links</a>.  I also use Dropbox to sync ebooks that I&rsquo;m ready across my Macbook Pro, iPad and iPhone.</p>
-
-<p><strong><em><a href="http://www.sublimetext.com/">Sublime Text 2</a></em></strong> &ndash; Until this year, my go to text editor was Textmate.  While I still think Textmate is a good choice (especially now that it&rsquo;s open source), I think the features of Sublime Text set it apart.  I love how customizable it is and how many of the built-in features make you so much more productive.  And if it doesn&rsquo;t do something you&rsquo;d like, there&rsquo;s probably a package that you can install to add in the feature.  Check out my <a href="https://github.com/ascot21/SublimePrefs/blob/master/Preferences.sublime-settings">Sublime Preferences file</a>.</p>
-
-<p><strong><em><a href="http://www.alfredapp.com/">Alfred</a></em></strong> &ndash; Alfred has become an essential part of how I work on my Mac.  I&rsquo;ve mainly used it for launching apps and doing searches but I&rsquo;m slowly learning how to use all of it&rsquo;s amazing features.</p>
-
-<h3>Developer Tools</h3>
-
-<p><strong><em><a href="http://git-scm.com/">Git</a></em></strong> and <strong><em><a href="http://github.com">Github</a></em></strong> &ndash; Version control has always something I knew I needed but I never knew how to go about learning to use it.  Thanks to a few mentors I was able to learn it this year.  I&rsquo;ve started implementing it for every project that I work on.  Not only does it make version control easy but it makes collaborating on a piece of software with other developers manageable.</p>
-
-<p><strong><em><a href="http://www.iterm2.com/#/section/home">iTerm</a></em></strong> &ndash; Learning how to use the Command Line was a big part of the new skills that I&rsquo;ve learned this year.  While the built in Terminal application of Mac OS X is fine, I really love the features of iTerm.  This is the newest tool I&rsquo;ve adopted so I&rsquo;m still learning how to customize and use it to it&rsquo;s full potential.</p>
-
-<p><strong><em><a href="http://rubular.com/">Rubular</a></em></strong> &ndash; Great for writing and figuring out regular expressions.</p>
-
-<p><strong><em><a href="http://foundation.zurb.com/">Foundation</a></em></strong> &ndash; My preferred front-end framework of choice.  Similar to Twitter Bootstrap but I like the default design better.  I use it for building fully responsive sites but I also use it for quick prototyping.</p>
-
-<p><strong><em><a href="http://sass-lang.com/">Sass</a></em></strong> &ndash; I switched from using Less for precompiling CSS this year mainly because Sass is widely used in the Ruby community.</p>
-
-<h3>User Tools</h3>
-
-<p><strong><em><a href="https://agilebits.com/onepassword">1Password </a></em></strong>&ndash; Great for managing all of the passwords I use.  A must have from now on.</p>
-
-<p><strong><em><a href="https://trello.com/">Trello</a></em></strong> &ndash; Prior to this year I managed most of projects through very informal practices (ie. via email and written down to-do lists).  Now I&rsquo;m using Trello to keep track of what I&rsquo;m working on.  I also like that I can allow clients and collaborators to see what I&rsquo;m working on and contribute if needed.</p>
-
-<p><strong><em><a href="http://freshbooks.com/">Freshbooks</a></em></strong> &ndash; Love how easy Freshbooks makes accounting.</p>
-
-<p><strong><em><a href="http://www.backblaze.com/">Backblaze</a></em></strong> &ndash; I&rsquo;ve added online backup to my workflow.  In the past, I relied on external hard drives with Time Machine.  Backblaze makes this something I don&rsquo;t even think about.</p>
-
-<p><strong><em><a href="http://www.telestream.net/screenflow/overview.htm">Screenflow</a></em></strong> &ndash; I often record video walkthroughs of sites I build for clients so that they have a reference material on how to update their site.  Screenflow makes it easy to quickly record high quality videos.</p>
-
-<p><strong><em><a href="http://limechat.net/mac/">LimeChat</a></em></strong> &ndash; I&rsquo;ve started hanging out in some developer focused IRC channels lately.  LimeChat is my preferred client.</p>
-
-<p><strong><em><a href="http://www.adobe.com/products/creativecloud.html">Photoshop/Illustrator/InDesign</a></em></strong> &ndash; I&rsquo;m still using CS5 for all of my design tools.  Haven&rsquo;t had a reason to upgrade yet.</p>
-
-<p><strong><em><a href="http://www.rdio.com/">Rdio</a></em></strong> &ndash; In 2011, I started using streaming music to supplement my music collection.  In 2012, I&rsquo;ve basically moved all of my collection to streaming music.  I&rsquo;ve chosen Rdio because I love the great design of the app and the community features.</p>
-
-<h3>What&rsquo;s Next</h3>
-
-<p>There are several tools that are on my list of things to learn about and hopefully start using in the coming months.  Here&rsquo;s a breakdown of the ones I plan on diving into soon.</p>
-
-<p><strong><em><a href="http://coffeescript.org/">Coffeescript</a></em></strong> &ndash; Should hopefully help make writing javascript quicker and easier.</p>
-
-<p><strong><em><a href="http://haml.info/">Haml</a></em></strong> &ndash; A HTML precompiler.</p>
-
-<p><strong><em><a href="http://backbonejs.org/">Backbone.js</a></em></strong> &ndash; An MVC javascript framework for the client side.</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[Learning Ruby/Ruby on Rails: A Guide From a Fellow Nuby]]></title>
-    <link href="http://ascot21.github.io/blog/2012/12/03/learning-ruby-slash-ruby-on-rails-a-guide-from-a-fellow-nuby/"/>
-    <updated>2012-12-03T10:00:23-06:00</updated>
-    <id>http://ascot21.github.io/blog/2012/12/03/learning-ruby-slash-ruby-on-rails-a-guide-from-a-fellow-nuby</id>
-    <content type="html"><![CDATA[<p>2012 has been a transformative year for my career.  Back in May I heard about a new software training program called the Nashville Software School.  It&rsquo;s a new innovative training program that teaches students the fundamentals of web application technologies in via classroom lectures, exercises, mentors and apprenticeship.  I got involved with the program by being a teacher for the front-end part of the school.  I was a student in the second half which taught us the fundamentals of web application development with Ruby on Rails and all of the associated technologies.  After going through the program, I&rsquo;d like to share my tips on how to learn Ruby and Rails.  There is more that one way to learn but here&rsquo;s what worked for me.</p>
+</div>
 
-<!--more-->
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/01/27/moving-to-octopress-from-wordpress/" title="Previous Post: Moving To Octopress From Wordpress">&laquo; Moving To Octopress From Wordpress</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
-<h3>Prerequisites</h3>
+</div>
 
-<p><strong><em>HTML/CSS</em></strong> &ndash; You don&rsquo;t need to be an expert but it&rsquo;ll come in handy once you start working on views in Ruby on Rails</p>
-
-<p><strong><em>Unix Command</em></strong> Line- Again you don&rsquo;t need to be an expert but you need to now how to navigate through directories, manipulate files and alter file permissions.</p>
-
-<p><strong><em>Text Editor</em></strong> &ndash; While you can certainly get started with a basic text editor like Notepad or TextEdit, starting out with a real editor like Sublime Text 2 or Textmate will make you more productive in the end.  These editors have features like syntax highlighting, code completion and snippets.  Plus they are extensible so that you can add features and customize them to your liking.</p>
-
-<h3>Learn Pure Ruby First</h3>
-
-<p>A lot of people come to Ruby by first going straight into Rails without first learning the core Ruby language.  I think this is a mistake and will slow you down when picking up the language.  If you jump right into Rails, it will be hard to decipher what is Rails and what is actually just Ruby.</p>
-
-<p>I recommend picking up a beginner book such as Beginning Ruby and diving in.  That book in particular is focused on beginners so it only covers the fundamentals but it will get you going pretty quickly.</p>
-
-<p>Also, there are several great online interactive learning programs you can do.  I recommend <a href="https://rubymonk.com/">Ruby Monk</a>, <a href="http://rubykoans.com/">Ruby Koans</a> and <a href="http://www.codecademy.com/">Codecademy</a>.</p>
-
-<h3>Learn Basic Data Structures</h3>
-
-<p>Learning about the various data structures that are used in software development before diving into Rails will pay off.  One of the trickiest parts of building an app is deciding how it will work.  Knowing what data structures are out there and what the best practices for certain problems will allow you to architect better solutions.</p>
-
-<p>Learn the primitive typs such as boolean, floats and enumerables.  Learn the more advanced data structures such as arrays, maps, linked-lists, binary trees and queues.</p>
-
-<p>Once you think you&rsquo;ve got the major data structures memorized, write a program for a linked-list.  Once you have that write a doubly-linked-list.  For more check out the Wikipedia article <a href="http://en.wikipedia.org/wiki/Data_structure">Data Structures</a></p>
-
-<h3>Version Control Is Your Friend</h3>
-
-<p>It happens to everyone.  You spend hours and hours writing some complex code.  Then your hard drive crashes or you accidentally delete a file.  All of that hard work is gone. But if you would have learned version control you could be back up running in a matter of minutes.</p>
-
-<p>So learn <a href="http://git-scm.com/">Git</a> and how to use <a href="http://github.com/">Github</a> as your remote repository for all of your code.  I recommend starting out by following along with the tutorial on <a href="http://gitimmersion.com/">Git+Immersion</a>.  It&rsquo;ll walk you through getting Git setup on your system and the basics of creating repos, recording or committing code, working with branches and recovering files.  The <a href="http://git-scm.com/book">Git Book</a> is another great read.</p>
-
-<p>Finally, I&rsquo;d like to point out that using Git and Github not only allow you to have version control but they also are a huge tool for collaborating with other developers.  They allow multiple devs to work on the same code and then later seamlessly merge them together with little effort.  Github is also the central place that open-source Ruby projects are managed.  Many of the tools and corresponding documentation that you&rsquo;ll use once you get to Rails are hosted there.  Get comfortable with it now.</p>
-
-<h3>Test-Driven Development Makes You And Your App Better</h3>
-
-<p>Writing the tests for your code before writing the code itself might sound a little backwards but trust me, it&rsquo;ll lead to better code.  By taking the time to lay out your tests you&rsquo;ll be knocking out more than you realize.  Not only will the tests check your code to make sure it works like you intended but it will also force you into thinking through how you want it to work (something that devs often don&rsquo;t fully do).  Often the process of writing the tests will help you simplify the problem and help you find easier solutions.  The biggest benefit of TDD is that you&rsquo;ll gain confidence in your code.  Adding features to a large code base is no longer scary.  If you have tests, you&rsquo;ll know of any bugs before you ship.</p>
-
-<p>Rails ships with Test::Unit but most developers are using <a href="http://rspec.info/">RSpec</a>.  The official documentation is a good place to start.  Also many developers are using <a href="http://cukes.info/">Cucumber</a> to write behavior driven tests.</p>
-
-<p>Learning TDD is hard.  It requires a mindset change for most people.  But from talking with lots of seasoned developers, it&rsquo;s a battle worth waging.  Dig in and learn to love it.  Once you do you&rsquo;ll never look back.  The confidence in your code that you gain is worth it.  Not to mention the money saved in not having to chase bugs.</p>
-
-<h3>Learn the Ruby on Rails Framework</h3>
-
-<p>Now that you&rsquo;ve got the fundamentals of Ruby, version control and TDD down, you can jump into Rails.  Rails is a huge monolithic framework that can be intimidating at first.  But once you have the fundamentals of the software down, the details of various parts are easier to work out.</p>
-
-<p>Here&rsquo;s the order that I suggest you learn the main parts:</p>
-
-<ol>
-<li>Active Record Associations</li>
-<li>Rails Database Migrations</li>
-<li>Query Interface</li>
-<li>Action Controller</li>
-<li>Routing</li>
-<li>Views and Layouts</li>
-<li>Form Helpers</li>
-</ol>
-
-
-<p>David Hartl&rsquo;s free online book &ldquo;<a href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book">Ruby on Rails Tutorial</a>&rdquo; is a great introduction to Rails.  It covers all of the basics without being to intimidating.  Next I recommend checking out the official <a href="http://guides.rubyonrails.org/">Ruby on Rails Guides</a>.  The guides layout the most basic features in a well thought out manner with lots of examples.  This proved to be my favorite resource for the basics.  Also, the <a href="http://api.rubyonrails.org/">official docs</a> are well thought out and include everything you need.</p>
-
-<p>Once you have those basics down, I suggest diving deeper by learning:</p>
-
-<ul>
-<li>Action Mailer</li>
-<li>Debugging</li>
-<li>Performance Testing</li>
-<li>Command line tools and rake tasks</li>
-<li>Security</li>
-</ul>
-
-
-<p>Finally, as we discussed earlier it&rsquo;s important to learn how to test Rails applications as you build them.  Rails ships with Test::Unit but most people also use RSpec for testing.  Some even go the extra step and use Cucumber to do integration testing.  I recommend following along with the tutorial in <a href="http://www.manning.com/katz/">Rails 3 In Action</a>. The process that the author uses is TDD.  You&rsquo;ll learn lots of ways of testing the different parts of the application.</p>
-
-<h3>Don&rsquo;t Stop Learning</h3>
-
-<p>Just like most other technologies the feature-set and syntax of Ruby on Rails is continuously evolving.  It&rsquo;s important to stay up to date with the latest techniques and features.  Here&rsquo;s my recommendations where to look for new info.</p>
-
-<p><a href="http://rubyweekly.com/">Ruby Weekly</a> &ndash; a free weekly newsletter with links to the newest articles around the web</p>
-
-<p><a href="http://www.rubyinside.com/">Ruby Inside</a> &ndash; the latest news and tutorials</p>
-
-<p><a href="http://railscasts.com">Rails Casts</a> &ndash; screencast tutorials. My single favorite resource.</p>
-
-<p><a href="https://www.ruby-toolbox.com/">Ruby-Toolbox</a> &ndash; gem library with lots of useful information</p>
-
-<p><a href="http://www.rubyflow.com/">Ruby Flow</a> &ndash; updated daily with every news story related to Ruby</p>
-
-<p><a href="http://rubyrogues.com/">Ruby Rogues</a> &ndash; weekly podcast featuring some of the communities top developers</p>
-]]></content>
-  </entry>
+<aside class="sidebar">
   
-</feed>
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/06/rails-subscription-site-with-recurly/">Rails Subscription Site With Recurly</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/27/moving-to-octopress-from-wordpress/">Moving to Octopress From Wordpress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/21/renaming-a-ruby-on-rails-application/">Renaming a Ruby on Rails Application</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/17/my-development-tools-2013/">My Development Tools (2013)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/03/learning-ruby-slash-ruby-on-rails-a-guide-from-a-fellow-nuby/">Learning Ruby/Ruby on Rails: A Guide From a Fellow Nuby</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+    <footer id="main-footer" role="contentinfo"><p>
+  Copyright &copy; 2014 - Adam Scott -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'adamscottio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/';
+        var disqus_url = 'http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+</body>
+</html>

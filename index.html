@@ -9,7 +9,7 @@
   <meta name="author" content="Adam Scott">
 
   
-  <meta name="description" content="After years of using Wordpress as my blogging platform I&rsquo;ve decided to move to Octopress. While there was not necessarily anything wrong with &hellip;">
+  <meta name="description" content="Creating a subscription based website with Rails can seem daunting at first, but with the help of Recurly and Devise you can be up and running in no &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,515 @@
 
 <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/06/rails-subscription-site-with-recurly/">Rails Subscription Site With Recurly</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-06T20:24:06-06:00" pubdate data-updated="true"><i class="fa fa-calendar-o"></i> Feb 6<span>th</span>, 2014</time>
+        
+        
+
+<span class="categories">
+  <i class="fa fa-comment"></i>
+  
+    <a class='category' href='/blog/categories/gems/'>Gems</a>, <a class='category' href='/blog/categories/rails/'>Rails,</a>
+  
+</span>
+
+
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Creating a subscription based website with Rails can seem daunting at first, but with the help of <a href="http://recurly.com">Recurly</a> and <a href="https://github.com/plataformatec/devise">Devise</a> you can be up and running in no time.</p>
+
+<p>Recurly.js does most of its work in the user&rsquo;s browser, dynamically building a form that handles the transaction.</p>
+
+<p><strong>Note:</strong> This tutorial assumes you&rsquo;ve already setup Devise for authenticating your User model.</p>
+
+<h3>Step 1 &ndash; Setup Your Recurly Account</h3>
+
+<p>Go to <a href="https://app.recurly.com/signup">https://app.recurly.com/signup</a> and sign up for the Recurly service.</p>
+
+<h3>Step 2 &ndash; Create a Subscription Plan</h3>
+
+<p>Once you&rsquo;ve signed up for Recurly you&rsquo;ll be presented with a button to &ldquo;Create a Subscription Plan&rdquo;.  Click that or if you are already in your account click on &ldquo;Subscription Plans&rdquo; under the &ldquo;Configuration&rdquo; section of the left navigation.  Then in the top right click &ldquo;New Subscription Plan&rdquo;.</p>
+
+<p>Fill out the form.</p>
+
+<ul>
+<li>For the <strong>Return URL after Success</strong> enter <code>http://localhost:3000/recurly/success?account_code=&amp;plan=</code> (you&rsquo;ll want to change the root of this url when you push to production)</li>
+<li>check the <strong>Bypass Recurly Confirmation?</strong> checkbox</li>
+<li>note the <strong>Plan Code</strong> that you enter as you&rsquo;ll need it later in the config</li>
+</ul>
+
+
+<h3>Step 3 &ndash; Enable API Access and Push Notifications</h3>
+
+<p>Recurly requires you to manually turn on access to the API. In Recurly, go to <strong>API Credentials</strong> under the <strong>Developer</strong> section of the left navigation.  Click <strong>Enable API Access</strong> and Recurly will generate an API Key and Access Key that you&rsquo;ll use later.</p>
+
+<p>Next you&rsquo;ll need to enable push notifications.  Go to <strong>Push Notifications</strong> in the <strong>Developer</strong> section and then click <strong>Configure</strong>.  Fill out the form putting whatever username and password you&rsquo;d like.  You&rsquo;ll have to use <a href="http://requestb.in/">RequestBin</a> like Recurly suggests for the notification url during testing but can change this to you live server once you deploy to a production site.</p>
+
+<h3>Step 4 &ndash; Install the Recurly Gem</h3>
+
+<p>To install the <a href="https://github.com/recurly/recurly-client-ruby">Recurly gem</a> simply add <code>gem 'recurly'</code> to your Gemfile and then run <code>bundle install</code>.</p>
+
+<h3>Step 5 &ndash; Setup the Initializer</h3>
+
+<p>The Recurly gem includes a generator to create the initializer that your app will need.</p>
+
+<p>Run <code>rails g recurly:config</code> to create the config/initializers/recurly.rb file.</p>
+
+<p>It should look like:</p>
+
+<figure class='code'><figcaption><span>config/initializers/recurly.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Recurly</span><span class="o">.</span><span class="n">subdomain</span>        <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RECURLY_SUBDOMAIN&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="no">Recurly</span><span class="o">.</span><span class="n">api_key</span>          <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RECURLY_API_KEY&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="no">Recurly</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">private_key</span>   <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RECURLY_JS_PRIVATE_KEY&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 6 &ndash; Set Environment Variables</h3>
+
+<p>You&rsquo;ll need to set the environment variables that Recurly uses in the config.  You can either do this manually or use a tool like <a href="https://github.com/bkeepers/dotenv">dotenv</a> to manage them.</p>
+
+<p>You&rsquo;ll need to set the following environment variables:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>RECURLY_SUBDOMAIN <span class="c"># set during step three</span>
+</span><span class='line'>RECURLY_API_KEY <span class="c"># set during step three</span>
+</span><span class='line'>RECURLY_JS_PRIVATE_KEY <span class="c"># set during step three</span>
+</span><span class='line'>RECURLY_PLAN_CODE <span class="c"># set during step two</span>
+</span><span class='line'>RECURLY_USER <span class="c"># set during step three as &#39;HTTP Auth Username&#39;</span>
+</span><span class='line'>RECURLY_PASSWORD <span class="c"># set during step three as &#39;HTTP Auth Password&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 7 &ndash; Set the Recurly Global Settings</h3>
+
+<p>Recurly requires you to specify some general settings, specifically your subdomain and the currency you want to use.  To do so add the following to you application layout before the closing body tag.</p>
+
+<figure class='code'><figcaption><span>views/layouts/application.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="no">Recurly</span><span class="o">.</span><span class="n">config</span><span class="p">({</span>
+</span><span class='line'>   <span class="ss">subdomain</span><span class="p">:</span> <span class="s1">&#39;&lt;%= Recurly.subdomain %&gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>   <span class="ss">currency</span><span class="p">:</span> <span class="s1">&#39;USD&#39;</span>
+</span><span class='line'> <span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 8 &ndash; Configure Routes</h3>
+
+<p>You&rsquo;ll want to setup a few routes to handle the various parts of the signup process.</p>
+
+<p>You&rsquo;ll need the following routes:</p>
+
+<ul>
+<li><strong>/pay</strong> &ndash; the page where the subscription payment form will be</li>
+<li><strong>/thank-you</strong> &ndash; the page that is rendered after a successful subscription</li>
+<li><strong>/signatures/:plan_code</strong> &ndash; a route for generating a signature to sign the Recurly requests</li>
+<li><strong>/recurly/success</strong> &ndash; the route Recurly will send back a success JSON response to</li>
+</ul>
+
+
+<p>Add the following to your config/routes.rb file:</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">match</span> <span class="s1">&#39;/pay&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;site#pay&#39;</span>
+</span><span class='line'><span class="n">match</span> <span class="s1">&#39;/thank-you&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;site#thank_you&#39;</span><span class="p">,</span> <span class="ss">:as</span> <span class="o">=&gt;</span> <span class="ss">:thank_you</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:signatures</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:show</span>
+</span><span class='line'><span class="n">resource</span> <span class="ss">:recurly</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="o">[]</span><span class="p">,</span> <span class="ss">:controller</span> <span class="o">=&gt;</span> <span class="ss">:recurly</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">post</span> <span class="ss">:success</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:member</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 9 &ndash; Setup the Signatures Controller</h3>
+
+<p>Recurly requires that you sign your request to make the data tamper proof.  The Javascript library includes a way to create this signature.</p>
+
+<p>You&rsquo;ll need to create a Signatures controller.  You&rsquo;ll use this later to generate signatures for signing your requests.</p>
+
+<figure class='code'><figcaption><span>app/controllers/signatures_controller.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Api</span><span class="o">::</span><span class="ss">V1</span><span class="p">:</span><span class="ss">:SignaturesController</span> <span class="o">&lt;</span> <span class="ss">Api</span><span class="p">:</span><span class="ss">:V1</span><span class="o">::</span><span class="no">BaseController</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>    <span class="n">respond_with</span><span class="p">({</span><span class="ss">:signature</span> <span class="o">=&gt;</span> <span class="no">Recurly</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="ss">:subscription</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:plan_code</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span> <span class="p">})})</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 10 &ndash; Add Recurly Attributes to User Model</h3>
+
+<p>There are two attributes you&rsquo;ll need to add to your user model.  The <strong>recurly_account_code</strong> is the identifier Recurly uses to lookup an account.  The <strong>subscription_active</strong> attribute is a boolean that indicates whether or not that user has an active subscription with Recurly.</p>
+
+<p>Create a migration by running <code>rake db:migrate add_recurly_attributes_to_users</code></p>
+
+<p>Make sure the migration looks like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddRecurlyAttributesToUsers</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:recurly_account_code</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:subscription_active</span><span class="p">,</span> <span class="ss">:boolean</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run <code>rake db:migrate</code> to run the migration.</p>
+
+<h3>Step 11 &ndash; Setup the Recurly Controller</h3>
+
+<p>The Recurly controller handles the success of a subscription request as well as push notifications from Recurly.</p>
+
+<p>The success action grabs the Recurly subscription and saves the recurly_account_code to the User model.  In addition, it sets the subscription_active attribute (which you can use to determine if a user has an active subscription) to true.</p>
+
+<p>The notification action handles push notifications from Recurly. It sets up some basic http authentication for the notification action. Recurly will send a push notification to you app any time a subscription is created or reactivated, thus updating the User model subscription_active attribute.  Expired subsciption push notifications from Recurly will mark the subscription_active attribute as false.</p>
+
+<figure class='code'><figcaption><span>app/controllers/recurly_controller.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">RecurlyController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="n">skip_before_filter</span> <span class="ss">:verify_authenticity_token</span>
+</span><span class='line'>  <span class="n">http_basic_authenticate_with</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;RECURLY_USER&quot;</span><span class="o">]</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;RECURLY_PASSWORD&quot;</span><span class="o">]</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:notification</span>
+</span><span class='line'>  <span class="n">before_filter</span> <span class="ss">:authenticate_user!</span><span class="p">,</span> <span class="ss">:except</span> <span class="o">=&gt;</span> <span class="ss">:notification</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">success</span>
+</span><span class='line'>    <span class="n">subscription</span> <span class="o">=</span> <span class="no">Recurly</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">fetch</span> <span class="n">params</span><span class="o">[</span><span class="ss">:recurly_token</span><span class="o">]</span>
+</span><span class='line'>    <span class="n">current_user</span><span class="o">.</span><span class="n">recurly_account_code</span> <span class="o">=</span> <span class="n">subscription</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">account_code</span>
+</span><span class='line'>    <span class="n">current_user</span><span class="o">.</span><span class="n">subscription_active</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="n">current_user</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>    <span class="n">redirect_to</span> <span class="n">thank_you_path</span>
+</span><span class='line'>  <span class="k">rescue</span> <span class="ss">Recurly</span><span class="p">:</span><span class="ss">:Error</span><span class="p">,</span> <span class="no">NoMethodError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>    <span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="n">e</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">:subscription_error</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">notification</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">request</span><span class="o">.</span><span class="n">request_parameters</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>    <span class="k">when</span> <span class="s2">&quot;new_subscription_notification&quot;</span>
+</span><span class='line'>      <span class="n">activate_subscription</span> <span class="n">params</span><span class="o">[</span><span class="ss">:new_subscription_notification</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">when</span> <span class="s2">&quot;reactivated_account_notification&quot;</span>
+</span><span class='line'>      <span class="n">activate_subscription</span> <span class="n">params</span><span class="o">[</span><span class="ss">:reactivated_account_notification</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">when</span> <span class="s2">&quot;expired_subscription_notification&quot;</span>
+</span><span class='line'>      <span class="n">deactivate_subscription</span> <span class="n">params</span><span class="o">[</span><span class="ss">:expired_subscription_notification</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">activate_subscription</span><span class="p">(</span><span class="n">nparams</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_recurly_account_code</span> <span class="n">nparams</span><span class="o">[</span><span class="ss">:account</span><span class="o">][</span><span class="ss">:account_code</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">subscription_active</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">deactivate_subscription</span><span class="p">(</span><span class="n">nparams</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_recurly_account_code</span> <span class="n">nparams</span><span class="o">[</span><span class="ss">:account</span><span class="o">][</span><span class="ss">:account_code</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">subscription_active</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 12 &ndash; Setup Devise Redirect after Signup</h3>
+
+<p>By default the Devise gem redirects the user to the root_path after a successful signup.  We want the user to be redirected to a page where they can pay for the subscription so that the process is a seemless one.</p>
+
+<p>Create a registrations_controller.rb file in a users directory.  This will redirect the user to the &lsquo;/pay&rsquo; url where our subscription payment form will sit.</p>
+
+<figure class='code'><figcaption><span>app/controllers/users/registrations_controller.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Users</span><span class="o">::</span><span class="no">RegistrationsController</span> <span class="o">&lt;</span> <span class="ss">Devise</span><span class="p">:</span><span class="ss">:RegistrationsController</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">after_sign_up_path_for</span><span class="p">(</span><span class="n">resource_or_scope</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">pay_url</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You&rsquo;ll need to also specify the controller for the Devise route.</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">devise_for</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:controllers</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:registrations</span> <span class="o">=&gt;</span> <span class="s2">&quot;users/registrations&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 13 &ndash; Setup the Site Controller</h3>
+
+<p>We&rsquo;ll need to set the controller actions for the site_controller.  These actions don&rsquo;t do much.</p>
+
+<figure class='code'><figcaption><span>app/controllers/site_controller.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">SiteController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">pay</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">thank_you</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 14 &ndash; Create the Pay View</h3>
+
+<p>Create the markup for the pay_url.  Create the app/views/site/pay.html.erb file and add the following to it:</p>
+
+<figure class='code'><figcaption><span>app/views/site/pay.html.erb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">&lt;form id=&quot;recurly-payment-form&quot;&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s1">&#39;recurly-payment&#39;</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;script type=&quot;text/javascript&quot;&gt;</span>
+</span><span class='line'><span class="x">  CURRENT_USER = </span><span class="cp">&lt;%=</span> <span class="n">raw</span> <span class="n">current_user</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span> <span class="cp">%&gt;</span><span class="x">;</span>
+</span><span class='line'><span class="x">  PLAN_CODE = &#39;</span><span class="cp">&lt;%=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RECURLY_PLAN_CODE&#39;</span><span class="o">]</span> <span class="cp">%&gt;</span><span class="x">&#39;</span>
+</span><span class='line'><span class="x">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The form element is where the Recurly form will be generated by Recurly.js.  We also include a recurly-payment.js file and pass some variables to it.</p>
+
+<h3>Step 15 &ndash; Create the Thank You View</h3>
+
+<p>This view can have whatever you&rsquo;d like in it but make sure it includes a clear message that the subscription process is complete.</p>
+
+<h3>Step 16 &ndash; Create the Javascript for Recurly.js</h3>
+
+<p>In this step you&rsquo;ll be writing the Javascript that will generate the subscription payment form.</p>
+
+<p>The following code is in Coffeescript but you can adapt it to pure Javascript if you&rsquo;d like.</p>
+
+<figure class='code'><figcaption><span>app/assets/javascripts/recurly-payment.js.coffee </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">RecurlyPayment</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">(@data) -&gt;</span>
+</span><span class='line'>    <span class="vi">@$form = </span><span class="nx">$</span><span class="p">(</span><span class="s">&#39;#recurly-payment&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">@getSignature</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">getSignature: </span><span class="nf">-&gt;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span>
+</span><span class='line'>      <span class="nv">url: </span><span class="s">&quot;/signatures/</span><span class="si">#{</span><span class="nx">PLAN_CODE</span><span class="si">}</span><span class="s">&quot;</span>
+</span><span class='line'>      <span class="nv">type: </span><span class="s">&#39;GET&#39;</span>
+</span><span class='line'>      <span class="nv">dataType: </span><span class="s">&#39;json&#39;</span>
+</span><span class='line'>      <span class="nv">success: </span><span class="nx">@handleSignatureAcquired</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">handleSignatureAcquired: </span><span class="nf">(response) =&gt;</span>
+</span><span class='line'>    <span class="nx">Recurly</span><span class="p">.</span><span class="nx">buildSubscriptionForm</span>
+</span><span class='line'>      <span class="nv">target: </span><span class="s">&#39;#recurly-payment-form&#39;</span>
+</span><span class='line'>      <span class="nv">planCode: </span><span class="nx">PLAN_CODE</span>
+</span><span class='line'>      <span class="nv">successURL: </span><span class="s">&#39;/recurly/success&#39;</span>
+</span><span class='line'>      <span class="nv">signature: </span><span class="nx">response</span><span class="p">.</span><span class="nx">signature</span>
+</span><span class='line'>      <span class="nv">acceptPaypal: </span><span class="kc">false</span>
+</span><span class='line'>      <span class="nv">acceptedCards: </span><span class="p">[</span><span class="s">&quot;mastercard&quot;</span><span class="p">,</span> <span class="s">&quot;visa&quot;</span><span class="p">]</span>
+</span><span class='line'>      <span class="nv">termsOfServiceURL: </span><span class="s">&#39;/terms&#39;</span>
+</span><span class='line'>      <span class="nv">billingInfo:</span>
+</span><span class='line'>        <span class="nv">firstName: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">first_name</span>
+</span><span class='line'>        <span class="nv">lastName: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">last_name</span>
+</span><span class='line'>        <span class="nv">address1: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">address_1</span>
+</span><span class='line'>        <span class="nv">address2: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">address_2</span>
+</span><span class='line'>        <span class="nv">country: </span><span class="s">&#39;United States&#39;</span>
+</span><span class='line'>        <span class="nv">city: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">city</span>
+</span><span class='line'>        <span class="nv">state: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">state</span>
+</span><span class='line'>        <span class="nv">zip: </span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">zip_code</span>
+</span><span class='line'>      <span class="nv">afterInject: </span><span class="o">=&gt;</span>
+</span><span class='line'>        <span class="nx">@formLoaded</span><span class="p">()</span>
+</span><span class='line'>    <span class="kc">true</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">formLoaded: </span><span class="nf">-&gt;</span>
+</span><span class='line'>    <span class="c1"># populate user info</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">CURRENT_USER</span>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.first_name :input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">first_name</span><span class="p">)</span>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.first_name .placeholder&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.last_name :input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">last_name</span><span class="p">)</span>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.last_name .placeholder&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.email :input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">CURRENT_USER</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span>
+</span><span class='line'>      <span class="nx">@$form</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.email .placeholder&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span> <span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">paymentForm = </span><span class="k">new</span> <span class="nx">RecurlyPayment</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will first hit the &lsquo;/signatures&rsquo; endpoint in your app to generate a Recurly signature and then using the response build the subscription form.</p>
+
+<h3>Step 17 &ndash; Include Recurly.js in Your Application.js</h3>
+
+<p>Make sure you include the Recurly.js code in the asset pipeline.</p>
+
+<figure class='code'><figcaption><span>app/assets/javascripts/application.js.coffee </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="c1">#= require recurly</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>You&rsquo;re Done!</h3>
+
+<p>This concludes the basics of setting up a subscription payment form for a Rails app.  More than likely you&rsquo;ll want to also setup a form where a user can update their billing info.  To do so you&rsquo;ll need to use Recurly&rsquo;s <a href="https://docs.recurly.com/api/recurlyjs/reference#js-buildBillingInfoUpdateForm">buildBillingInfoUpdateForm</a> function.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
