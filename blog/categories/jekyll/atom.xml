@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jekyll | Adam Scott]]></title>
   <link href="http://ascot21.github.io/blog/categories/jekyll/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-02-07T15:08:35-06:00</updated>
+  <updated>2014-08-02T14:13:41-07:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Moving to Octopress From Wordpress]]></title>
     <link href="http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress/"/>
-    <updated>2014-01-27T23:15:22-06:00</updated>
+    <updated>2014-01-27T21:15:22-08:00</updated>
     <id>http://ascot21.github.io/blog/2014/01/27/moving-to-octopress-from-wordpress</id>
     <content type="html"><![CDATA[<p>After years of using Wordpress as my blogging platform I&rsquo;ve decided to move to <a href="http://octopress.org/">Octopress</a>.  While there was not necessarily anything wrong with using Wordpress for my blog, I think it was time to move on.  Octopress is a blogging framework that is built around the <a href="http://jekyllrb.com/">Jekyll.rb</a> project that generates static html sites.</p>
 

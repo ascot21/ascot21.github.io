@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails, | Adam Scott]]></title>
   <link href="http://ascot21.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://ascot21.github.io/"/>
-  <updated>2014-02-07T15:08:35-06:00</updated>
+  <updated>2014-08-02T14:13:41-07:00</updated>
   <id>http://ascot21.github.io/</id>
   <author>
     <name><![CDATA[Adam Scott]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Rails Subscription Site With Recurly]]></title>
     <link href="http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly/"/>
-    <updated>2014-02-06T20:24:06-06:00</updated>
+    <updated>2014-02-06T18:24:06-08:00</updated>
     <id>http://ascot21.github.io/blog/2014/02/06/rails-subscription-site-with-recurly</id>
     <content type="html"><![CDATA[<p>Creating a subscription based website with Rails can seem daunting at first, but with the help of <a href="http://recurly.com">Recurly</a> and <a href="https://github.com/plataformatec/devise">Devise</a> you can be up and running in no time.</p>
 
