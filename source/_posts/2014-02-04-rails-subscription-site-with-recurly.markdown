@@ -62,7 +62,7 @@ RECURLY_PASSWORD # set during step three as 'HTTP Auth Password'
 ###Step 7 - Set the Recurly Global Settings
 Recurly requires you to specify some general settings, specifically your subdomain and the currency you want to use.  To do so add the following to you application layout before the closing body tag.
 
-{% codeblock lang:ruby views/layouts/application.rb %}
+{% codeblock lang:ruby views/layouts/application.html.erb %}
 <script type="text/javascript">
  Recurly.config({
    subdomain: '<%= Recurly.subdomain %>',
